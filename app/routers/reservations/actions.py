@@ -1,11 +1,10 @@
 from datetime import timedelta
 from sqlalchemy.orm import Session
 
-from app.models.reservation import Reservation
-
 from app.dto.reservation import (
     ReservationCreate
 )
+from app.models.reservation import Reservation
 
 
 def is_the_table_free_at_the_time(

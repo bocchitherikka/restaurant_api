@@ -1,10 +1,9 @@
 from sqlalchemy import exists, func, select
 from sqlalchemy.orm import Session
 
+from app.dto.table import TableCreate
 from app.models.reservation import Reservation
 from app.models.table import Table
-
-from app.dto.table import TableCreate
 
 
 def add_new_table_to_db(

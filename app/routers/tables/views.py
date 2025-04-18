@@ -1,14 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.services.db import get_db
-from app.services.exceptions import (
-    ObjectNotFoundException,
-    TableHasReservationsException
-)
-
-from app.models.table import Table
-
 from app.dto.general import (
     DeleteObjectByID
 )
@@ -16,11 +8,16 @@ from app.dto.table import (
     TableCreate,
     TableOut
 )
-
+from app.includes.exceptions import (
+    ObjectNotFoundException,
+    TableHasReservationsException
+)
+from app.models.table import Table
 from app.routers.tables.actions import (
     add_new_table_to_db,
     is_table_has_reservations
 )
+from app.services.db import get_db
 
 router = APIRouter()
 

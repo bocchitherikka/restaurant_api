@@ -1,7 +1,15 @@
 from fastapi import HTTPException
 
 
-class ObjectNotFoundException(HTTPException):
+class APIException(HTTPException):
+    def __init__(self, status_code: int, detail: str = "Error"):
+        super().__init__(
+            status_code=status_code,
+            detail=detail
+        )
+
+
+class ObjectNotFoundException(APIException):
     def __init__(self, klass):
         super().__init__(
             status_code=404,
@@ -9,7 +17,7 @@ class ObjectNotFoundException(HTTPException):
         )
 
 
-class TableOccupiedException(HTTPException):
+class TableOccupiedException(APIException):
     def __init__(self):
         super().__init__(
             status_code=403,
@@ -17,7 +25,7 @@ class TableOccupiedException(HTTPException):
         )
 
 
-class TableHasReservationsException(HTTPException):
+class TableHasReservationsException(APIException):
     def __init__(self):
         super().__init__(
             status_code=403,
